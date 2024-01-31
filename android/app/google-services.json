@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1027568997703",
+    "project_id": "exploregithub-7bbf8",
+    "storage_bucket": "exploregithub-7bbf8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027568997703:android:5239a81c9fade7faee6862",
+        "android_client_info": {
+          "package_name": "com.example.explore_github"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaIs--_12pX97OqjfWMJnVsqSjxOhLXkU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
