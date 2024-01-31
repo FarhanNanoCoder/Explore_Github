@@ -7,6 +7,7 @@ import 'package:explore_github/Utilities/app_colors.dart';
 import 'package:explore_github/Utilities/utility.dart';
 import 'package:explore_github/Views/Components/Core/app_button.dart';
 import 'package:explore_github/Views/Components/Core/app_text_form_field.dart';
+import 'package:explore_github/Views/Screens/Home/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -55,9 +56,7 @@ class _AuthScreenState extends State<AuthScreen> {
       }
 
       if (res.data != null) {
-     
-      } else {
-       
+        Navigator.of(Utility.context).pushNamedAndRemoveUntil(HomeScreen.routeName, (route) => false);
       }
     }
   }

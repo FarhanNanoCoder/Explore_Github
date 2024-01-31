@@ -50,8 +50,7 @@ class AppInputFormField extends StatelessWidget {
   })  : textColor = textColor ?? AppColors().textColor,
         cursorColor = cursorColor ?? AppColors().primaryColor,
         enabledBorderColor = enabledBorderColor ?? AppColors().grey300,
-
-        focusedBorderColor = focusedBorderColor ?? AppColors().primaryColor;
+        focusedBorderColor = focusedBorderColor ?? AppColors().primaryColor.withOpacity(0.5);
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -64,15 +63,32 @@ class AppInputFormField extends StatelessWidget {
       controller: controller,
       autofocus: false,
       autovalidateMode: AutovalidateMode.onUserInteraction,
+      
       cursorColor: textColor,
-      onChanged: (value) {if (onChange != null) {onChange!(value);} },
+      onChanged: (value) {
+        if (onChange != null) {
+          onChange!(value);
+        }
+      },
       validator: validator,
-      textInputAction: (maxLines > 1) ? TextInputAction.newline: (goNextOnComplete ? TextInputAction.next : TextInputAction.done),
+      textInputAction: (maxLines > 1)
+          ? TextInputAction.newline
+          : (goNextOnComplete ? TextInputAction.next : TextInputAction.done),
       obscureText: obscureText,
       decoration: InputDecoration(
-        // hintText: hint,
-        hintStyle: AppText(style: 'regular',color: hintOrLabelColor,size: 16,).getStyle(),
-        helperStyle: AppText(style: 'regular',color: AppColors().grey400, size: 10, ).getStyle(),
+        
+        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        hintText: hint,
+        hintStyle: AppText(
+          style: 'regular',
+          color: hintOrLabelColor,
+          size: 16,
+        ).getStyle(),
+        helperStyle: AppText(
+          style: 'regular',
+          color: AppColors().grey400,
+          size: 10,
+        ).getStyle(),
         labelText: label,
         floatingLabelBehavior: FloatingLabelBehavior.auto,
         floatingLabelStyle: MaterialStateTextStyle.resolveWith(
@@ -80,34 +96,86 @@ class AppInputFormField extends StatelessWidget {
             final Color color = states.contains(MaterialState.error)
                 ? AppColors().red
                 : AppColors().primaryColor;
-            return TextStyle(color: color,);
+            return TextStyle(
+              color: color,
+            );
           },
-        ),  
-        
-        labelStyle: AppText(style: 'regular',color: hintOrLabelColor,size: 16,).getStyle(),
-        errorStyle: AppText(style: 'regular',color: AppColors().red,size: 12,).getStyle(),
+        ),
+
+        labelStyle: AppText(
+          style: 'regular',
+          color: hintOrLabelColor,
+          size: 16,
+        ).getStyle(),
+        errorStyle: AppText(
+          style: 'regular',
+          color: AppColors().red,
+          size: 12,
+        ).getStyle(),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: BorderSide(color: AppColors().secondaryColor,width: 1, ),
+          borderSide: BorderSide(
+            color: AppColors().secondaryColor,
+            width: 1,
+          ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: BorderSide(color: focusedBorderColor,width: 1,),
+          borderSide: BorderSide(
+            color: focusedBorderColor,
+            width: 1,
+          ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: BorderSide(color: enabledBorderColor,width: 1, ),
+          borderSide: BorderSide(
+            color: enabledBorderColor,
+            width: 1,
+          ),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: BorderSide(color: AppColors().red, width: 1, ), ),
+          borderSide: BorderSide(
+            color: AppColors().red,
+            width: 1,
+          ),
+        ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: BorderSide( color: AppColors().red,width: 1, ), ),
+          borderSide: BorderSide(
+            color: AppColors().red,
+            width: 1,
+          ),
+        ),
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: BorderSide( color: AppColors().grey200, width: 1, ),
+          borderSide: BorderSide(
+            color: AppColors().grey200,
+            width: 1,
+          ),
         ),
+        focusColor: focusedBorderColor,
+        iconColor: MaterialStateColor.resolveWith((states) {
+          final Color color = states.contains(MaterialState.focused)
+              ? focusedBorderColor
+              : enabledBorderColor;
+
+          return color;
+        }),
+        prefixIconColor: MaterialStateColor.resolveWith((states) {
+          final Color color = states.contains(MaterialState.focused)
+              ? focusedBorderColor
+              : enabledBorderColor;
+
+          return color;
+        }),
+        suffixIconColor: MaterialStateColor.resolveWith((states) {
+          final Color color = states.contains(MaterialState.focused)
+              ? focusedBorderColor
+              : enabledBorderColor;
+
+          return color;
+        }),
         fillColor: backgroundColor,
         filled: backgroundColor != null ? true : false,
         prefixText: prefixText,

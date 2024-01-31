@@ -1,10 +1,10 @@
 import 'package:explore_github/Utilities/app_colors.dart';
 import 'package:explore_github/Views/Components/Core/flow_navigationbar.dart';
-import 'package:explore_github/Views/Screens/Dashboard/dashboard_screen.dart';
+import 'package:explore_github/Views/Screens/Repo/repos_screen.dart';
 import 'package:explore_github/Views/Screens/Settings/settings_screen.dart';
+import 'package:explore_github/Views/Screens/User/github_users.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "/HomeScreen";
@@ -26,7 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors().white,
@@ -41,8 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
             });
           },
           children: [
-            DashboardScreen(),
-        
+            GithubUsersScreen(),
+            ReposScreen(),
             SettingsScreen(),
           ],
         ),
@@ -59,7 +58,8 @@ class _HomeScreenState extends State<HomeScreen> {
             });
           },
           icons: const [
-            Icons.dashboard_outlined,
+            Icons.groups_2_outlined,
+            Icons.dns_outlined,
             // Icons.circle_outlined,
             // Icons.history_outlined,
             Icons.settings_outlined,
