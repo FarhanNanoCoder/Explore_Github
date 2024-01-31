@@ -1,4 +1,4 @@
-import 'package:explore_github/Utilities/AppColors.dart';
+import 'package:explore_github/Utilities/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppText{

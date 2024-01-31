@@ -1,4 +1,6 @@
-import 'package:explore_github/Utilities/AppColors.dart';
+import 'package:explore_github/Utilities/app_colors.dart';
+import 'package:explore_github/Views/Screens/Entrance/entrance_screen.dart';
+import 'package:explore_github/Views/Screens/Home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -14,11 +16,11 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
 @override void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 1), () {
       if (FirebaseAuth.instance.currentUser != null) {
-            Navigator.pushReplacementNamed(context, '/AuthScreen');
+            Navigator.pushReplacementNamed(context, HomeScreen.routeName);
       } else {
-        Navigator.pushReplacementNamed(context, '/AuthScreen');
+        Navigator.pushReplacementNamed(context, EntranceScreen.routeName);
       }
     });
   }
