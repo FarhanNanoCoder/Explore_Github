@@ -110,7 +110,7 @@ class _RootAppState extends State<RootApp> {
                   case GithubUsersScreen.routeName:return CustomPageRoute(page: GithubUsersScreen(), settings: settings);
                   case SettingsScreen.routeName:return CustomPageRoute(page: SettingsScreen(), settings: settings);
                   case GithubUserDetailsScreen.routeName:return CustomPageRoute(page: GithubUserDetailsScreen(githubUsername: settings.arguments as String?,), settings: settings);
-                  case ReposScreen.routeName:return CustomPageRoute(page: ReposScreen(), settings: settings);
+                  case ReposScreen.routeName:return CustomPageRoute(page: ReposScreen(githubUser: settings.arguments as GithubUser?,), settings: settings);
                   case RepoDetailsScreen.routeName:return CustomPageRoute(page: RepoDetailsScreen(repoId: settings.arguments as int?,), settings: settings);
                 }
                 return null;

@@ -29,7 +29,7 @@ class _RepoDetailsScreenState extends State<RepoDetailsScreen> {
                 future: RepoRepository.getRepoDetails(widget.repoId!),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   }

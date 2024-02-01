@@ -124,7 +124,7 @@ class _GithubUsersScreenState extends State<GithubUsersScreen> {
                 child: PagedListView<int, GithubUser>(
                     pagingController: _pagingController,
                     shrinkWrap: true,
-          
+                    
                     // padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 8),
                     builderDelegate: PagedChildBuilderDelegate<GithubUser>(
                       itemBuilder: (context, user, index) => GithubUserWidget(

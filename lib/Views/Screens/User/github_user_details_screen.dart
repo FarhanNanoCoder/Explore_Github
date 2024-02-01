@@ -2,7 +2,9 @@ import 'package:explore_github/Models/api_response.dart';
 import 'package:explore_github/Models/github_user.dart';
 import 'package:explore_github/Repositories/github_user_repository.dart';
 import 'package:explore_github/Utilities/app_colors.dart';
+import 'package:explore_github/Views/Components/Core/app_button.dart';
 import 'package:explore_github/Views/Components/avatar.dart';
+import 'package:explore_github/Views/Screens/Repo/repos_screen.dart';
 import 'package:flutter/material.dart';
 
 class GithubUserDetailsScreen extends StatefulWidget{
@@ -122,6 +124,10 @@ class _GithubUserDetailsScreenState extends State<GithubUserDetailsScreen> {
                       ],
                     ),
                   ),
+                  const SizedBox(height: 16,),
+                  AppButton(context: context).getOutlinedTextButtton(title: "See repositories", onPressed: (){
+                    Navigator.pushNamed(context, ReposScreen.routeName,arguments: snapshot.data?.data??null);
+                  })
                 ],
               );
             }
